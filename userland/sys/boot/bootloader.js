@@ -12,8 +12,22 @@
 
   // Prepare the key listener
   let bootkeyListener = () => {
-    // Debug
-    console.debug('Key pressed!');
+    // Cancel the normal boot timer
+    clearTimeout(normalBootTimer);
+
+    // Remove the key listener
+    document.body.removeEventListener('keydown', bootkeyListener);
+
+    // Display the boot options
+    // TODO: Make the boot options and the mode that are associated
+    //       (e.g. repair mode)
+
+    /** ======= PATH WHILE THE BOOT OPTIONS ARE NOT MADE ======= **/
+    bootLine('WARNING: Sorry, but the boot options are not available for now.');
+    bootLine('WARNING: System will now boot.');
+
+    // Make a timer to boot normally in 3 seconds.
+    setTimeout(boot, 3000);
   };
 
   // Give the focus to the boot screen
