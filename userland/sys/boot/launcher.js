@@ -116,6 +116,20 @@ app.on('ready', () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({ show: false });
 
+  // If the system is hosted...
+  // NOTE: This block is placed here because the "error()" function needs to
+  //       manipulate the main window a little. Also, dialog boxes can be used
+  //       only when the application is ready.
+  if (hosted) {
+    // Look for a "userland" directory, which contains the plain data
+    if (! fs.existsSync('userland') || ! fs.lstatSync('userland').isDirectory())
+      // Throw an error
+      return error('Error in hosting process', 'The "userland" directory was not found. Please move the NightOS system to it.');
+
+    // Go to the data directory
+    process.chdir('userland');
+  }
+
   // Remove the menu bar...
   mainWindow.setMenu(null);
 
