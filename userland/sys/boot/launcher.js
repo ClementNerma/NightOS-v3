@@ -173,6 +173,11 @@ app.on('ready', () => {
   // Show the main window
   mainWindow.show();
 
+  // If the console is enabled...
+  if (argv.includes('console'))
+    // Open the developer tools
+    mainWindow.webContents.openDevTools();
+
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
     // Dereference the window object, usually you would store windows
