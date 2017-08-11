@@ -101,12 +101,23 @@
      * @returns {void}
      */
     function error (message, jsError = null) {
+      // Get a stack
+      let stack = (jsError || new Error('&lt;unknown&gt;')).stack
+        // Replace full paths by relative paths
+        .replace(/file:\/\/\//g, '')
+        .replace(new RegExp(
+          // Get the system's root path (/)
+          path.join(__dirname, '..')
+            // Allow '/' or '\'
+            .replace(/\/|\\/g, '[\\/\\\\]'),
+          // Perform the replacement as much as needed
+          'g'
+        ), '' /* Just remove the part that makes the path full instead of relative */);
+
       // Prepare the message area
       document.getElementById('s_message').innerHTML = message +
         // Add a JavaScript stack
-        '<br /><br /><pre>' +
-        (jsError || new Error('&lt;unknown&gt;')).stack +
-        '</pre><br /><br />';
+        `<br /><br /><pre>${stack}</pre><br /><br />`;
 
       // Prepare the restart area
       let restartArea = document.getElementById('s_restart');
@@ -235,13 +246,21 @@
       // Determine if debug mode is enabled (same thing here)
       debug = argv.includes('--debug');
 
+      // Get the bootloader's full path
+      let bootloaderPath = path.join(__dirname, 'boot', 'bootloader.js');
+
+      // If the bootloader is not found...
+      if (! fs.existsSync(bootloaderPath) || ! fs.lstatSync(bootloaderPath).isFile())
+        // Throw an error
+        return error('Bootloader is missing.');
+
       // Next step is: read the bootloader's script
       let bootloader;
 
       // Try to...
       try {
         // ...read the bootloader's script
-        bootloader = fs.readFileSync(path.join(__dirname, 'boot', 'bootloader.js'), 'utf8');
+        bootloader = fs.readFileSync(bootloaderPath, 'utf8');
       } catch (e) {
         // An error occured ; treat it
         error(`Failed to read the bootloader's script.`, e);
