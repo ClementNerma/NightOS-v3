@@ -228,6 +228,12 @@
       bootDuration = args.loadingDuration;
       // Boot message
       bootLine(`Response received. Boot duration is ${bootDuration} ms.`);
+      // Save command-line arguments (flags)
+      argv = args.argv;
+      // Determine if the system is hosted (will be used by other programs)
+      hosted = argv.includes('--hosted');
+      // Determine if debug mode is enabled (same thing here)
+      debug = argv.includes('--debug');
     });
 
     // Send a "hello" message to the launcher
