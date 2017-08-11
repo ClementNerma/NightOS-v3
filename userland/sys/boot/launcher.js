@@ -116,6 +116,17 @@ app.on('ready', () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({ show: false });
 
+  // For each argument provided...
+  for (let item of process.argv.slice(2)) {
+    // If it doesn't start by "--"...
+    if (! item.startsWith('--'))
+      // Throw an error
+      return error('Invalid command-line arguments', `Invalid argument >>> ${item} <<< ; command-line flags must start by "--".`, false, true);
+
+    // Save the argument in the list (without the "--")
+    argv.push(item.substr(2));
+  }
+
   // If the system is hosted...
   // NOTE: This block is placed here because the "error()" function needs to
   //       manipulate the main window a little. Also, dialog boxes can be used
