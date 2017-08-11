@@ -1,0 +1,31 @@
+{
+  "name": "nightos",
+  "version": "0.1.0",
+  "description": "The NightOS project, running on any host system",
+  "main": "userland/sys/boot/launcher.js",
+  "scripts": {
+    "start": "node start.js"
+  },
+  "keywords": [
+    "Electron",
+    "NightOS",
+    "Linux",
+    "Host"
+  ],
+  "files": [
+    "userland",
+    "start.js",
+    "README.md",
+    "LICENSE.md"
+  ],
+  "author": "Clément Nerma",
+  "license": "CC-BY-NC-ND-4.0",
+  "dependencies": {
+    "electron": "latest",
+    "minimist": "latest",
+    "chalk": "latest"
+  },
+  "devDependencies": {
+    "devtron": "^1.3.0"
+  }
+}
