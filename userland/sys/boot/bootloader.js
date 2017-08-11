@@ -53,6 +53,23 @@
     //       access the system's encrypted partition and a few other things,
     //       like securing the GUI (its role is not strictly fixed for now).
     let sysloaderFile = (! hosted ? 'lxloader.js' /* Linux loader */ : 'sysloader.js');
+
+    // Boot message
+    bootLine(`Reading loader "${sysloaderFile}"...`);
+
+    // Load the right loader's file.
+    // NOTE: The loading code below is copied from the main frame's inline
+    //       script.
+    let loader;
+
+    // Try to...
+    try {
+      // ...read the system loader's script
+      loader = fs.readFileSync(path.join(__dirname, 'boot', sysloaderFile), 'utf8');
+    } catch (e) {
+      // An error occured ; treat it
+      error(`Failed to read loader's script.`, e);
+    }
   }
 
   // If the "--autoboot" flag was provided...
