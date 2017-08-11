@@ -44,14 +44,20 @@
     // Has to be made
   }
 
+  // If the "--autoboot" flag was provided...
+  if (argv.includes('--autoboot'))
+    // Boot message
+    bootLine(`Flag "--autoboot" was specified. You won't be able to access the boot options.`);
+
   // Make a timer to boot normally if no key has been pressed in 3 seconds.
+  // NOTE: The system will boot instantly if the "--autoboot" flag is enabled
   // NOTE: The timer is saved in a variable to be canceled if a key is pressed
   //       during the short delay.
   let normalBootTimer = setTimeout(
     // No key was pressed ; boot normally
     boot,
-    // 3s wait
-    3000
+    // No wait with "--autoboot" flag, 3 seconds else
+    argv.includes('--autoboot') ? 0 : 3000
   );
 
 })(); // Invoke the bootloader's code as a functino
