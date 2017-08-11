@@ -85,6 +85,15 @@
     "use strict";
 
     /**
+     * Restart the system
+     * @returns {void}
+     */
+    function reboot() {
+      // Send a signal to the Electron application
+      ipc.send('reboot');
+    }
+
+    /**
      * Throw an error and display the splash screen
      * @param {string} message The error message
      * @param {Error} jsError A native JavaScript error
