@@ -219,7 +219,16 @@
           ipc = modules.electron.ipcRenderer; // IPC to interact with the launcher
 
     // Boot message
-    bootLine('Sending a "hello" message to the launcher...');
+    bootLine('Sending a "hello" message to the launcher, waiting for response...');
+
+    // When the launcher receives the "hello" message from the main process,
+    // it sends a "welcome" message using IPC.
+    ipc.on('welcome', (event, args) => {
+      // Save the loading duration
+      bootDuration = args.loadingDuration;
+      // Boot message
+      bootLine(`Response received. Boot duration is ${bootDuration} ms.`);
+    });
 
     // Send a "hello" message to the launcher
     ipc.send('hello');
