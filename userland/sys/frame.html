@@ -5,7 +5,20 @@
   <title>NightOS</title>
 </head>
 <body>
-  <!-- Debug message -->
-  <h1>Hello world!</h1>
+  <!-- Initial boot screen -->
+  <pre id="s_boot">Initializing boot process...</pre>
+
+  <!-- Splash screen -->
+  <div id="s_error">
+    <!-- Information message -->
+    NightOS encountered a critical error during the boot process and must restart.<br />
+    Error's details are displayed below. If you are not a developer, ignore them.<br /><br />
+
+    <!-- The error message -->
+    <pre id="s_message"></pre>
+
+    <!-- The restart area -->
+    <div id="s_restart"></div>
+  </div>
 </body>
 </html>
