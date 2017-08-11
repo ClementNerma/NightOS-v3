@@ -251,6 +251,29 @@
         // Make the system crash
         error('System was forced to crash due to the "--crash" flag.');
 
+      // Before doing anything else, check if a script must be injected in the
+      // main frame (this one).
+      let inject = argv.filter(flag => flag.startsWith('--inject='))[0 /* Get the only result */];
+
+      // If a script has to be injected...
+      if (inject) {
+        // Load it first
+        let injScript;
+
+        // Try to...
+        try {
+          // ...read the script
+          injScript = fs.readFileSync(path.normalize(inject.substr('--inject='.length)), 'utf8');
+        } catch (e) {
+          // Reading failed, throw an error
+          return error('Failed to inject the script in the main frame.', e);
+        }
+
+        // Run the script in the global scope to make it doing what it wants to
+        // do in the main frame.
+        window.eval(injScript);
+      }
+
       // Get the bootloader's full path
       let bootloaderPath = path.join(__dirname, 'boot', 'bootloader.js');
 
