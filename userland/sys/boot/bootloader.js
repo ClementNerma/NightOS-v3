@@ -41,6 +41,9 @@
    * @returns {void}
    */
   function boot () {
+    // Remove the key listener
+    document.body.removeEventListener('keydown', bootkeyListener);
+
     // Boot message
     bootLine('System is now booting...');
 
