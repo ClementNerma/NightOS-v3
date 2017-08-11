@@ -73,6 +73,14 @@
       // An error occured ; treat it
       error(`Failed to read loader's script.`, e);
     }
+
+    // Boot message
+    bootLine(`Starting the system loader...`);
+
+    // Evaluate the script as a JavaScript code
+    // The script could be runned here with eval(), but its variables,
+    // functions and constants wouldn't be global.
+    window.eval(loader);
   }
 
   // If the "--autoboot" flag was provided...
