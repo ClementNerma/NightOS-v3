@@ -197,6 +197,26 @@
     if (typeof require !== 'function')
       // Throw an error
       error('Failed to use require() ; please ensure Node.js is enabled in the system frame.', e);
+
+    // Declare a variable to receive some native modules
+    let modules = {};
+
+    // For each module to load...
+    for (let name of [ 'fs', 'path', 'electron' ]) {
+      // Try...
+      try {
+        // ...to load the module
+        modules[name] = require(name);
+      } catch (e) {
+        // An error occured ; treat it
+        error(`Failed to load "${name}" module. Please ensure that native Node.js and Electron modules are available in the system frame.`, e);
+      }
+    }
+
+    // Declare some constants for the modules
+    const fs = modules.fs, // Node.js module
+          path = modules.path, // Node.js module
+          ipc = modules.electron.ipcRenderer; // IPC to interact with the launcher
   </script>
 </body>
 </html>
