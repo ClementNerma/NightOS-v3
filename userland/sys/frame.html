@@ -5,6 +5,64 @@
   <title>NightOS</title>
 </head>
 <body>
+  <!-- Inline stylesheet instead of external CSS file to prevent disk errors -->
+  <style type="text/css">
+    /* Try to laod the "Free Mono" font */
+    @font-face {
+      font-family: "Free Mono";
+      src: url("fonts/free-mono/regular.ttf");
+    }
+
+    /* Stylize the boot message */
+    #s_boot {
+      /* Take the entire screen */
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      /* The style itself */
+      padding: 3px;
+      font-size: 16px;
+      background-color: black;
+      color: white;
+      line-height: 20px;
+    }
+
+    /* Stylize the splash screen */
+    #s_error {
+      /* Take the entire screen */
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      /* Be sure to cover anything else on the page */
+      z-index: 9999;
+      /* The style itself */
+      line-height: 25px;
+      background-color: #1800F4;
+      color: white;
+      font-family: "Free Mono";
+      font-size: 17px;
+      /* Padding and size */
+      padding: 10%;
+      /* Hide the splash screen */
+      display: none;
+    }
+
+    /* Stylize the error message */
+    #s_message {
+      /* Set the font size */
+      font-size: 16px;
+      /* Make a beautiful box :o */
+      border: 1px solid gray;
+      padding: 10px;
+    }
+  </style>
+
   <!-- Initial boot screen -->
   <pre id="s_boot">Initializing boot process...</pre>
 
