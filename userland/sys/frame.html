@@ -155,6 +155,22 @@
       throw new Error('This error prevents some scripts to run when a splash screen is displayed.');
     }
 
+    // Display a message in the console. If the native console is opened, this
+    // message will be shown by the user ; else it won't be visible.
+    // Because this message is directly written in the native console and not
+    // in the NightOS' one, the entry will not be logged by the system.
+    // (Even if it could be logged by an external tool or by the launcher)
+    console.log(`%cWARNING\n=======\n\n%cThis is the Electron's native console.\n\n` +
+                'Anything you type here can modify the system, you have full access to the main process ressources.\n' +
+                `Be aware to do not damage any system file, else it won't be able to boot or work properly.\n\n` +
+                '%cAlso, ensure to %cNEVER %cpaste here a line or a code you found on the web or any external source without knowing exactly what it does.',
+                /* CSS for messages */
+                'color: black; font-weight: bold; font-size: 18px;',
+                'color: black;',
+                'color: red;',
+                'color: red; font-weight: bold;',
+                'color: red;');
+
     // Declare some variables to receive data from the launcher
     // NOTE: These variables are declared at the top because the error()
     //       function uses some of them.s
