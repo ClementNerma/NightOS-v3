@@ -191,6 +191,12 @@
 
     // Boot message
     bootLine('Declared functions for the boot process.');
+    bootLine('Loading native modules...');
+
+    // Check if require() is available
+    if (typeof require !== 'function')
+      // Throw an error
+      error('Failed to use require() ; please ensure Node.js is enabled in the system frame.', e);
   </script>
 </body>
 </html>
