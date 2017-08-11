@@ -234,6 +234,18 @@
       hosted = argv.includes('--hosted');
       // Determine if debug mode is enabled (same thing here)
       debug = argv.includes('--debug');
+
+      // Next step is: load system files (so load the loader script first)
+      let loader;
+
+      // Try to...
+      try {
+        // ...reader the loader script
+        loader = fs.readFileSync(path.join(__dirname, 'boot', 'bootloader.js'), 'utf8');
+      } catch (e) {
+        // An error occured ; treat it
+        error(`Failed to read loader's script.`, e);
+      }
     });
 
     // Send a "hello" message to the launcher
