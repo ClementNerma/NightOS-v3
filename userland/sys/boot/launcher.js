@@ -70,7 +70,64 @@ function error(title, message, hideReport = false, forbidReload = false) {
     app.quit();
   // Make a report (not always available)
   else if(ans === 2) {
-    // Has to be made
+    // Prepare the issue's content
+    let body;
+
+    // If the message is a string
+    if (typeof message === 'string')
+      // The error comes from the launcher itself
+      body = `Report from NightOS.\n\n* **Cause:** Launcher\n* **Title:** ${escapeMarkdown(title)}\n* **Message:** ${escapeMarkdown(message)}`;
+    else {
+      // The error comes from NightOS
+      // Remove environment variables (that could contain sensitive data, even though they're encrypted)
+      delete body.debug.env_variables;
+
+      // Make the report's body
+      body = `Report from NightOS.\n\n* **Origin:** System\n\n## Error object\n\n\`\`\`json\n${JSON.stringify(message, null, 2)}\n\`\`\``;
+    }
+
+    // Prepare additionnal informations as an object
+    let addinfo = {
+      uptime: Date.now() - started, // Uptime
+      loadtime: (loadingDuration || false), // Time for system's loading
+      host: os.platform(), // O.S. name
+      arch: os.arch() // O.S. arch
+    };
+
+    // Try to...
+    try {
+      // Join the system's version (based on the NPM's package.json)
+      addinfo.npmversion = JSON.parse(fs.readFileSync(require('path').join(__dirname, '..', '..', 'package.json'), 'utf8')).version;
+    } catch (e) {
+      // Catch the error
+      addinfo.npmversion = '<Unable to read the system\'s version (Fs error)>';
+    }
+
+    // Make an "Additionnal informations" section
+    body += '\n\n## Additionnal informations\n\n```json\n'
+            // Join informations on the current system
+            + JSON.stringify(addinfo, null, 2)
+            // Close the section
+            + '\n```';
+
+    // Make the final URL
+    let url = 'https://github.com/ClementNerma/NightOS/issues/new?title=%5BAutomatic%20report%5D%20'
+              + encodeURIComponent(title) +'&body=' + encodeURIComponent(body);
+
+    // Report the error through a GitHub issue
+    // If it fails...
+    if(!electron.shell.openExternal(url))
+      // Show an error dialog box
+      dialog.showMessageBox({
+        type   : 'error',
+        buttons: ['Close'],
+        title  : 'Error',
+        message: 'Report failed',
+        details: 'It seems you have no default browser for opening links.'
+      });
+
+    // Close the window
+    mainWindow.close();
   }
 }
 
