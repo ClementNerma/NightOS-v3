@@ -217,6 +217,12 @@
     const fs = modules.fs, // Node.js module
           path = modules.path, // Node.js module
           ipc = modules.electron.ipcRenderer; // IPC to interact with the launcher
+
+    // Boot message
+    bootLine('Sending a "hello" message to the launcher...');
+
+    // Send a "hello" message to the launcher
+    ipc.send('hello');
   </script>
 </body>
 </html>
