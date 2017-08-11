@@ -4,7 +4,8 @@
   "description": "The NightOS project, running on any host system",
   "main": "userland/sys/boot/launcher.js",
   "scripts": {
-    "start": "node start.js"
+    "start": "node start.js",
+    "dev": "node start.js --debug --console --autoboot --can-reload"
   },
   "keywords": [
     "Electron",
