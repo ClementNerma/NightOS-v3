@@ -150,10 +150,15 @@ app.on('ready', () => {
   // Emitted when the page is re-loaded
   mainWindow.webContents.on('did-start-loading', function() {
     // If the application was already loaded...
-    if(appLoaded)
-      // Throw an error
-      error('Reload is forbidden', 'For security reasons, Electron cannot be refreshed while still running.\nThe application just closed.', true);
-    else // If the application loads for the first time...
+    if(appLoaded) {
+      // If reloading is allowed by the "--can-reload" flag...
+      if (argv.includes('can-reload'))
+        // Just restart NightOS
+        reload();
+      else
+        // Throw an error
+        error('Reload is forbidden', 'For security reasons, Electron cannot be refreshed while still running.\nThe application just closed.', true);
+    } else // If the application loads for the first time...
       // Consider the application as loaded
       appLoaded = true;
   });
