@@ -41,7 +41,18 @@
    * @returns {void}
    */
   function boot () {
-    // Has to be made
+    // Boot message
+    bootLine('System is now booting...');
+
+    // Determine which file to load
+    // => If the system is not hosted, call the "Linux loader"
+    //    (a script that manages Linux encryption...)
+    // => Else, ignore it
+    // NOTE: If the Linux loader is called, it will load the system loader after
+    //       a few interactions with Linux, in all cases. It is only needed to
+    //       access the system's encrypted partition and a few other things,
+    //       like securing the GUI (its role is not strictly fixed for now).
+    let sysloaderFile = (! hosted ? 'lxloader.js' /* Linux loader */ : 'sysloader.js');
   }
 
   // If the "--autoboot" flag was provided...
