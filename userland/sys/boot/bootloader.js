@@ -8,6 +8,19 @@
 (function () {
   // Boot message
   bootLine('Bootloader started.');
+  bootLine('Press any key to display the boot options...');
+
+  // Prepare the key listener
+  let bootkeyListener = () => {
+    // Debug
+    console.debug('Key pressed!');
+  };
+
+  // Give the focus to the boot screen
+  bootArea.focus();
+
+  // Attach the key listener
+  document.body.addEventListener('keydown', bootkeyListener);
 
   /**
    * Boot normally
