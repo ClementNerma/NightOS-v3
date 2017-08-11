@@ -79,7 +79,35 @@ function error(title, message, hideReport = false, forbidReload = false) {
   * @returns {void}
   */
 function reload() {
-  // Has to be made
+  // Make a new child process with the app
+  const child = require('child_process').spawn(
+    // The electron's executable path
+    process.argv[0],
+    // The same command-line arguments
+    process.argv.slice(1),
+    // Set additionnal options for the new process
+    {
+      // Run Electron in the application's directory, because "package.json" is located here.
+      // Go to the NightOS' main folder (containing "userland")
+      cwd: require('path').join(__dirname, '..', '..', '..'),
+      // Detach the process from this one
+      detached: true,
+      // Ignore all output
+      stdio: 'ignore'
+    }
+  );
+
+  // Unreference the child process to make it independent from the current process
+  child.unref();
+
+  // If the window was not closed...
+  if (mainWindow)
+    // Close it
+    mainWindow.close();
+
+  // Exit this process (NightOS will run in a separate one, the child process
+  // we just launched)
+  process.exit(0);
 }
 
 // Save the instant when the loading started
