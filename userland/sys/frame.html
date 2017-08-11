@@ -246,6 +246,11 @@
       // Determine if debug mode is enabled (same thing here)
       debug = argv.includes('--debug');
 
+      // If asked to...
+      if (argv.includes('--crash'))
+        // Make the system crash
+        error('System was forced to crash due to the "--crash" flag.');
+
       // Get the bootloader's full path
       let bootloaderPath = path.join(__dirname, 'boot', 'bootloader.js');
 
