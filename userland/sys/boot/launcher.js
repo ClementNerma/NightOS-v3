@@ -113,6 +113,22 @@ let mainWindow;
 
 // When Electron is ready...
 app.on('ready', () => {
+  // Define a startup event
+  // The data returned by this handler could be passed by the URL, which is not
+  //  visible by applications, but calling a launcher's handler permits to
+  //  ensure IPC communication works well.
+  ipc.on('hello', event => {
+    // Saev the loading duration
+    loadingDuration = Date.now() - started;
+    // Send data to the application
+    event.sender.send('welcome', { argv: process.argv, loadingDuration });
+  });
+
+  /* === Define some services === */
+
+  // Reload the application
+  ipc.on('reboot', reload);
+
   // Create the browser window.
   mainWindow = new BrowserWindow({ show: false });
 
