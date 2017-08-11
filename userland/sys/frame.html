@@ -244,11 +244,11 @@
         loader = fs.readFileSync(path.join(__dirname, 'boot', 'bootloader.js'), 'utf8');
       } catch (e) {
         // An error occured ; treat it
-        error(`Failed to read loader's script.`, e);
+        error(`Failed to read the bootloader's script.`, e);
       }
 
       // Boot message
-      bootLine(`Starting system loader...`);
+      bootLine(`Starting the bootloader...`);
 
       // Evaluate the script as a JavaScript code
       // The script could be runned here with eval(), but its variables,
