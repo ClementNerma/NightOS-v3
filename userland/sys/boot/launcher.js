@@ -37,7 +37,7 @@ function error(title, message, hideReport = false, forbidReload = false) {
   // (Because if (forbidReload == true) when the user clicked on "reload", the
   //  window was already destroyed)
   try {
-    // Close the it (stop the system)
+    // Close it (stop the system)
     mainWindow.close();
   } catch (e) { /* Ignore errors */ }
 
@@ -97,10 +97,10 @@ function error(title, message, hideReport = false, forbidReload = false) {
     // Try to...
     try {
       // Join the system's version (based on the NPM's package.json)
-      addinfo.npmversion = JSON.parse(fs.readFileSync(require('path').join(__dirname, '..', '..', 'package.json'), 'utf8')).version;
+      addinfo.pkg_version = JSON.parse(fs.readFileSync(require('path').join(__dirname, '..', '..', 'package.json'), 'utf8')).version;
     } catch (e) {
       // Catch the error
-      addinfo.npmversion = '<Unable to read the system\'s version (Fs error)>';
+      addinfo.pkg_version = '<Unable to read the system\'s version (Fs error)>';
     }
 
     // Make an "Additionnal informations" section
