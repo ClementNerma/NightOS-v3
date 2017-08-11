@@ -155,6 +155,16 @@
       throw new Error('This error prevents some scripts to run when a splash screen is displayed.');
     }
 
+    /**
+     * Add a line to the initial boot screen
+     * @param {string} line The line to add
+     * @returns {void}
+     */
+    function bootLine (line) {
+      // Append the line to the screen
+      bootArea.innerText += `\n${line}`;
+    }
+
     // Display a message in the console. If the native console is opened, this
     // message will be shown by the user ; else it won't be visible.
     // Because this message is directly written in the native console and not
@@ -175,6 +185,12 @@
     // NOTE: These variables are declared at the top because the error()
     //       function uses some of them.s
     let argv, bootDuration, hosted, debug;
+
+    // Save a reference to the initial boot screen in a constant
+    const bootArea = document.getElementById('s_boot');
+
+    // Boot message
+    bootLine('Declared functions for the boot process.');
   </script>
 </body>
 </html>
