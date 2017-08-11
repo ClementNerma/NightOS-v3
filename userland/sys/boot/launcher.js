@@ -149,8 +149,13 @@ app.on('ready', () => {
 
   // Emitted when the page is re-loaded
   mainWindow.webContents.on('did-start-loading', function() {
-    // Consider the application as loaded
-    appLoaded = true;
+    // If the application was already loaded...
+    if(appLoaded)
+      // Throw an error
+      error('Reload is forbidden', 'For security reasons, Electron cannot be refreshed while still running.\nThe application just closed.', true);
+    else // If the application loads for the first time...
+      // Consider the application as loaded
+      appLoaded = true;
   });
 
   // Emitted when the page fails to load
