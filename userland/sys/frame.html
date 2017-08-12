@@ -7,10 +7,21 @@
 <body>
   <!-- Inline stylesheet instead of external CSS file to prevent disk errors -->
   <style type="text/css">
-    /* Try to laod the "Free Mono" font */
+    /* Try to load the "Free Mono" font */
     @font-face {
       font-family: "Free Mono";
       src: url("fonts/free-mono/regular.ttf");
+    }
+
+    /* Try to load the "Nimbus Mono" font */
+    @font-face {
+      font-family: "Nimbus Mono";
+      src: url("fonts/nimbus-mono/regular.otf");
+    }
+
+    /* Style code blocks */
+    [s-code="true"] {
+      font-family: "Nimbus Mono";
     }
 
     /* Stylize the boot message */
@@ -64,7 +75,7 @@
   </style>
 
   <!-- Initial boot screen -->
-  <pre id="s_boot">Initializing boot process...</pre>
+  <div id="s_boot" s-code="true">Initializing boot process...</div>
 
   <!-- Splash screen -->
   <div id="s_error">
@@ -73,7 +84,7 @@
     Error's details are displayed below. If you are not a developer, ignore them.<br /><br />
 
     <!-- The error message -->
-    <pre id="s_message"></pre>
+    <div id="s_message" s-code="true"></div>
 
     <!-- The restart area -->
     <div id="s_restart"></div>
@@ -117,7 +128,7 @@
       // Prepare the message area
       document.getElementById('s_message').innerHTML = message +
         // Add a JavaScript stack
-        `<br /><br /><pre>${stack}</pre><br /><br />`;
+        `<br /><br /><div s-code="true">${stack}</div><br /><br />`;
 
       // Prepare the restart area
       let restartArea = document.getElementById('s_restart');
@@ -125,7 +136,7 @@
       // If developer mode is enabled...
       if (Array.isArray(argv) && argv.includes('--debug'))
         // Do not reboot automatically
-        restartArea.innerHTML = 'Debug mode prevents the system from rebooting if a fatal error occurs. To reboot, run in the console the <pre style="display:inline-block;">reboot()</pre> function.';
+        restartArea.innerHTML = 'Debug mode prevents the system from rebooting if a fatal error occurs. To reboot, run in the console the <div s-code="true" style="display:inline-block;">reboot()</div> function.';
       else if (! bootDuration) // If native modules were not loaded, the system cannot restart by itself
         // The system cannot restart by itself
         restartArea.innerHTML = 'This error happened before a communication could be etablished with the launcher.<br />The system is not able to reboot by itself.<br />Please shutdown your computer manually and retry.';
