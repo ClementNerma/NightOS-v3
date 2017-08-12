@@ -36,6 +36,26 @@ If you really want to have specifications, here there are:
 
 That's all! Relax and enjoy :).
 
+## Installation
+
+Installation requires [NodeJS](https://nodejs.org), [NPM](https://npmjs.com) and [Git](https://git-scm.com/) installed on your machine. On Linux, you can run `sudo apt-get install nodejs npm git`. On Windows, simply visit these three websites to get the installation programs of each software.
+
+To install NightOS, open a command-line and run the following code :
+
+```bash
+git clone https://github.com/ClementNerma/NightOS # Download NightOS
+cd NightOS # Go to the NightOS directory
+npm install # Install the npm dependencies
+npm start # Start NightOS ; `node start.js` also works
+```
+
+You can also run NightOS in development mode (see more in the docs):
+
+```bash
+# The simple way
+npm run dev
+```
+
 ## License
 
 This project is released under the [GNU General Public License (GPL)](LICENSE.md). If you want to edit my work and publish modifications, please contact me first so I can view why and how you modified NightOS - even if you're not forced to. I made this project mainly for fun and demonstrate the JavaScript's power, so I'd like to know what improvements can be made.
