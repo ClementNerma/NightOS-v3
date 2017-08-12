@@ -14,3 +14,8 @@ This project is released under the [GNU General Public License (GPL)](LICENSE.md
 ## Disclaimer
 
 The software is provided "as is" and the author disclaims all warranties with regard to this software including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data or profits, whether in an action of contract, negligence or other tortious action, arising out of or in connection with the use or performance of this software.
+
+## Credits
+
+NightOS was built using [NodeJS](https://nodejs.org) and [Electron](https://github.com/electron/electron).
+Icons are from [Icons8](https://icons8.com), [Joe Parks](https://www.flickr.com/people/34450190@N08) and [Font-Awesome](http://fortawesome.github.io/Font-Awesome).
