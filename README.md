@@ -15,6 +15,16 @@ In fact, I made NightOS more for fun and using more deep JavaScript and Node.js 
 
 It's also a way to demonstrate the power of the JavaScript language, which is I think the most misunderstood one in the development world. By making a system fully functionnal that manages a Linux system, applications, a desktop environment, multiple user accounts, several processes, a large API and processes isolation, I think this could be a great proof that JavaScript is a powerful language - when you understand it and know how to use its deep features.
 
+## Differences with the previous versions of the system
+
+I published two previous versions of NightOS. You can find them on my GitHub: [v1](https://github.com/ClementNerma/NightOS-v1) and [v2](https://github.com/ClementNerma/NightOS-v2).
+
+v1 has a lot of problems, and v2 was not enough complete to be an operating system. So I decided to restart the project from scratch, and keeping just the main ideas of the project (a really strong security, permissions for apps...) and I made this new version of NightOS.
+
+There's some similar points with the older versions: the system still works with applications, that need permissions in order to access the storage/web/manage windows/... but now the permissions system is much stronger, much permissive and it's now possible to make unpackaged applications, programs that run without having to be installed (like .exe on Windows, but with permissions).
+
+So, even if you find the two old versions really bad, this one is very different, so I hope you'll enjoy it ;) !
+
 ## License
 
 This project is released under the [GNU General Public License (GPL)](LICENSE.md). If you want to edit my work and publish modifications, please contact me first so I can view why and how you modified NightOS - even if you're not forced to. I made this project mainly for fun and demonstrate the JavaScript's power, so I'd like to know what improvements can be made.
