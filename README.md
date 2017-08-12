@@ -10,3 +10,7 @@ NightOS works as a very large JavaScript application, that runs on a Linux + Ele
 ## License
 
 This project is released under the [GNU General Public License (GPL)](LICENSE.md). If you want to edit my work and publish modifications, please contact me first so I can view why and how you modified NightOS - even if you're not forced to. I made this project mainly for fun and demonstrate the JavaScript's power, so I'd like to know what improvements can be made.
+
+## Disclaimer
+
+The software is provided "as is" and the author disclaims all warranties with regard to this software including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data or profits, whether in an action of contract, negligence or other tortious action, arising out of or in connection with the use or performance of this software.
