@@ -25,6 +25,17 @@ There's some similar points with the older versions: the system still works with
 
 So, even if you find the two old versions really bad, this one is very different, so I hope you'll enjoy it ;) !
 
+## Computer requirements
+
+NightOS can run on any low-end computers. You don't have to worry about the performances of your machine.
+If you really want to have specifications, here there are:
+
+* At least 200 Mb of free RAM, 500 Mb recommended ;
+* Any low-end processor ;
+* A hard drive (that would be nice), a mouse, a keyboard and a screen.
+
+That's all! Relax and enjoy :).
+
 ## License
 
 This project is released under the [GNU General Public License (GPL)](LICENSE.md). If you want to edit my work and publish modifications, please contact me first so I can view why and how you modified NightOS - even if you're not forced to. I made this project mainly for fun and demonstrate the JavaScript's power, so I'd like to know what improvements can be made.
