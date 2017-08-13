@@ -68,7 +68,7 @@
     // Try to...
     try {
       // ...read the system loader's script
-      loader = fs.readFileSync(path.join(__dirname, 'boot', sysloaderFile), 'utf8');
+      loader = fs.readFileSync(path.join(__dirname /* main frame's __dirname */, 'boot', sysloaderFile), 'utf8');
     } catch (e) {
       // An error occured ; treat it
       error(`Failed to read loader's script.`, e);
@@ -99,4 +99,4 @@
     argv.includes('--autoboot') ? 0 : 3000
   );
 
-})(); // Invoke the bootloader's code as a functino
+})(); // Invoke the bootloader's code as a function
