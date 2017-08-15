@@ -25,3 +25,12 @@ try {
   // An error occured ; treat it
   error('Failed to read registry file', e);
 }
+
+// Try to...
+try {
+  // Parse the registry
+  registry = JSON.parse(registry);
+} catch (e) {
+  // An error occured ; treat it
+  error('Registry is not a valid JSON string', e);
+}
