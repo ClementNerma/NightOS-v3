@@ -34,24 +34,24 @@ bootLine('Sysloader has been loaded.');
 //       to warn the user system files or the hash table has been corrupted so
 //       the system may not work correctly.
 
-// Then, load the runtime
+// Then, load the desktop environment's launcher
 // NOTE: The loading code below is copied from the main frame's inline
 //       script.
-let runtime;
+let deskenv;
 
 // Try to...
 try {
-  // ...read the runtime's script
-  runtime = fs.readFileSync(path.join(__dirname /* main frame's __dirname */, 'runtime.js'), 'utf8');
+  // ...read the desktop environment launcher's script
+  deskenv = fs.readFileSync(path.join(__dirname /* main frame's __dirname */, 'deskenv.js'), 'utf8');
 } catch (e) {
   // An error occured ; treat it
-  error(`Failed to read the runtime's script.`, e);
+  error(`Failed to read the DE launcher's script.`, e);
 }
 
 // Boot message
-bootLine(`Starting the runtime...`);
+bootLine(`Starting the desktop environment launcher...`);
 
 // Evaluate the script as a JavaScript code
 // The script could be runned here with eval(), but its variables,
 // functions and constants wouldn't be global.
-window.eval(runtime);
+window.eval(deskenv);
