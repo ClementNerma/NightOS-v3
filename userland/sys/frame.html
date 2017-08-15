@@ -95,6 +95,9 @@
     // Enable strict mode
     "use strict";
 
+    // Memorize this exact moment to calculate the total boot duration.
+    let mainFrameStartup = Date.now();
+
     /**
      * Restart the system
      * @returns {void}
@@ -246,7 +249,7 @@
     // When the launcher receives the "hello" message from the main process,
     // it sends a "welcome" message using IPC.
     ipc.on('welcome', (event, args) => {
-      // Save the loading duration
+      // Save the boot duration
       bootDuration = args.loadingDuration;
       // Boot message
       bootLine(`Response received. Boot duration is ${bootDuration} ms.`);
