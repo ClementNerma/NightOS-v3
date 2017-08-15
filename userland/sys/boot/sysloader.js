@@ -11,3 +11,6 @@
 
 // Boot message
 bootLine('Sysloader has been loaded.');
+
+// TODO: Check if the registry is available and fully valid
+//       (no type mismatch...)
