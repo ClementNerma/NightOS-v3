@@ -28,3 +28,8 @@ bootLine('Sysloader has been loaded.');
 //         for example). That's only if an application can change system files
 //         but has no access to the secret key, which is in a RAM variable,
 //         so it can't re-generate the files table.
+// TODO: If a system file is corrupted, restore a copy of it from `/sys/mirror`
+// TODO: DO NOT FORGET to use a hash table for `/sys/mirror` too. If
+//       verification fails, display a large warning message on the screen
+//       to warn the user system files or the hash table has been corrupted so
+//       the system may not work correctly.
