@@ -34,3 +34,12 @@ try {
   // An error occured ; treat it
   error('Registry is not a valid JSON string', e);
 }
+
+// Get the DE's name in the registry
+// NOTE: The registry's path (launcher/target) won't change (frozen).
+let denv = (registry['launcher<folder>'] || {})['target<app>'];
+
+// If no DE was found...
+if (! denv)
+  // Throw an error
+  error('No desktop environment specified. Please rewrite /etc/registry to choose one.');
