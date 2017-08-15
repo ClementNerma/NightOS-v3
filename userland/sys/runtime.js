@@ -59,3 +59,9 @@ webview.setAttribute('nodeintegration', '');
 // Boot message
 bootLine('Desktop environment is now going to run.');
 bootLine(`Main frame's boot duration is currently ${Date.now() - mainFrameStartup} ms.`);
+
+// Catch errors while loading the application
+webview.addEventListener('did-fail-load', e => {
+  // THrow an error
+  error(`Desktop environment's webview failed to load (${e.errorCode}: ${e.errorDescription})`);
+});
