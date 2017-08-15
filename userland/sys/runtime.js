@@ -13,3 +13,15 @@ let regPath = path.join(__dirname /* Main frame's CWD */, '..', 'etc', 'registry
 if (! fs.existsSync(regPath) || ! fs.lstatSync(regPath).isFile())
   // Throw an error
   error('Registry file is missing');
+
+// Load the registry
+let registry;
+
+// Try to...
+try {
+  // Read the registry
+  registry = fs.readFileSync(regPath, 'utf8');
+} catch (e) {
+  // An error occured ; treat it
+  error('Failed to read registry file', e);
+}
