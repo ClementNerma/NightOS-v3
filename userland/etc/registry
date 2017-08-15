@@ -1,1 +1,6 @@
-{}
+{
+	"launcher<folder>": {
+		"target<app>": "dolphin",
+		"arguments<folder>": {}
+	}
+}
