@@ -65,3 +65,6 @@ webview.addEventListener('did-fail-load', e => {
   // THrow an error
   error(`Desktop environment's webview failed to load (${e.errorCode}: ${e.errorDescription})`);
 });
+
+// Inject this <webview> in the main frame's <body>
+document.body.appendChild(webview);
