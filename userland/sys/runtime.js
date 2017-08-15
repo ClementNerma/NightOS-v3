@@ -53,3 +53,5 @@ let webview = document.createElement('webview');
 // NOTE: The webview's style, including its size, are defined in the main
 //       frame's inline CSS.
 webview.setAttribute('src', path.join(__dirname /* Main frame's CWD */, 'process.html'));
+// Allow Node.js to be used in the process
+webview.setAttribute('nodeintegration', '');
