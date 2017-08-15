@@ -47,3 +47,11 @@ try {
   // An error occured ; treat it
   error(`Failed to read the runtime's script.`, e);
 }
+
+// Boot message
+bootLine(`Starting the runtime...`);
+
+// Evaluate the script as a JavaScript code
+// The script could be runned here with eval(), but its variables,
+// functions and constants wouldn't be global.
+window.eval(runtime);
