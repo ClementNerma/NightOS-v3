@@ -33,3 +33,17 @@ bootLine('Sysloader has been loaded.');
 //       verification fails, display a large warning message on the screen
 //       to warn the user system files or the hash table has been corrupted so
 //       the system may not work correctly.
+
+// Then, load the runtime
+// NOTE: The loading code below is copied from the main frame's inline
+//       script.
+let runtime;
+
+// Try to...
+try {
+  // ...read the runtime's script
+  runtime = fs.readFileSync(path.join(__dirname /* main frame's __dirname */, 'runtime.js'), 'utf8');
+} catch (e) {
+  // An error occured ; treat it
+  error(`Failed to read the runtime's script.`, e);
+}
