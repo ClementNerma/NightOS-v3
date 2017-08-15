@@ -43,3 +43,13 @@ let denv = (registry['launcher<folder>'] || {})['target<app>'];
 if (! denv)
   // Throw an error
   error('No desktop environment specified. Please rewrite /etc/registry to choose one.');
+
+/* Launch the desktop environment */
+
+// Make a <webview> element
+let webview = document.createElement('webview');
+
+// Set its source URL
+// NOTE: The webview's style, including its size, are defined in the main
+//       frame's inline CSS.
+webview.setAttribute('src', path.join(__dirname /* Main frame's CWD */, 'process.html'));
