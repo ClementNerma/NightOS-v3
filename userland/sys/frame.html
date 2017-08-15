@@ -72,6 +72,19 @@
       border: 1px solid gray;
       padding: 10px;
     }
+
+    /* Stylize the desktop environment's webview */
+    webview {
+      /* Take the entire screen */
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /* Be sure to cover anything else on the page,
+         excepted the splash screen */
+      z-index: 8;
+    }
   </style>
 
   <!-- Initial boot screen -->
