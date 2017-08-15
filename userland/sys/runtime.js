@@ -55,3 +55,7 @@ let webview = document.createElement('webview');
 webview.setAttribute('src', path.join(__dirname /* Main frame's CWD */, 'process.html'));
 // Allow Node.js to be used in the process
 webview.setAttribute('nodeintegration', '');
+
+// Boot message
+bootLine('Desktop environment is now going to run.');
+bootLine(`Main frame's boot duration is currently ${Date.now() - mainFrameStartup} ms.`);
