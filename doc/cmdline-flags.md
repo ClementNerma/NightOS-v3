@@ -27,4 +27,4 @@ The detailled log (enabled by `--full-log`) lists all actions performed by the s
 
 The log file can become really large in a short time and the many writing can slow down NightOS.
 
-Also, be aware of keeping the file in a secured place: all HTTP requests that are performed are stored into the log, as well as many actions you could perform while you are using it. The log file is cleaned when NightOS stops (you can prevent this by usnig the `--keep-log` flag).
+Also, be aware of keeping the file in a secured place: all HTTP requests that are performed are stored into the log, as well as many actions you could perform while you are using it. The log file is cleaned when NightOS stops (you can prevent this by using the `--keep-log` flag).
