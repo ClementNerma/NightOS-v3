@@ -100,7 +100,7 @@ function error(title, message, hideReport = false, forbidReload = false) {
       addinfo.pkg_version = JSON.parse(fs.readFileSync(require('path').join(__dirname, '..', '..', 'package.json'), 'utf8')).version;
     } catch (e) {
       // Catch the error
-      addinfo.pkg_version = '<Unable to read the system\'s version (Fs error)>';
+      addinfo.pkg_version = `<Unable to read the system's version (Fs error: ${e.message})>`;
     }
 
     // Make an "Additionnal informations" section
