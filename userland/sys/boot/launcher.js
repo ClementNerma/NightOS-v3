@@ -279,7 +279,8 @@ app.on('ready', () => {
     return error('Main file not found', 'System\'s main file was not found.');
 
   // Load the main frame's HTML file
-  mainWindow.loadURL(main);
+  // Add the "file:///" prefix, else ERR_INVALID_URL is thrown on some systems.
+  mainWindow.loadURL('file://' + (main.startsWith('/') ? '' : '/') + main);
 
   // Show the main window
   mainWindow.show();
