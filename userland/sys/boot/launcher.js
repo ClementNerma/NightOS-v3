@@ -271,7 +271,7 @@ app.on('ready', () => {
   });
 
   // Define the main file's URL
-  let main = require('path').join(__dirname, '..', 'frame.html');
+  let main = require('path').join(__dirname, '..', 'system.html');
 
   // If this file is not found...
   if (! fs.existsSync(main) || ! fs.lstatSync(main).isFile())
